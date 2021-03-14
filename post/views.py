@@ -53,6 +53,7 @@ class PostViewSet(viewsets.ModelViewSet):
 class AnaliticsLikeListView(generics.ListAPIView):
     """
     API View List of Likes of a specified date range.
+    Example parameters: ?date_from=2021-01-01&date_to=2021-03-15
     """
 
     serializer_class = AnaliticSerializer

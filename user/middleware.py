@@ -5,6 +5,11 @@ from .models import CustomUser
 
 
 class UpdateLastActivityMiddleware(MiddlewareMixin):
+    """
+    Middleware for capture the user's last request.
+    Update last_activity field in CustomUser model.
+    """
+
     def process_view(self, request, view_func, view_args, view_kwargs):
         assert hasattr(
             request, "user"
