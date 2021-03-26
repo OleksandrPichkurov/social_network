@@ -1,11 +1,11 @@
 from django.db import models
-
+from django.contrib.auth import get_user_model
 
 class Post(models.Model):
     title = models.CharField(max_length=50)
     content = models.TextField()
     author = models.ForeignKey(
-        "user.CustomUser", related_name="posts", on_delete=models.CASCADE
+        get_user_model(), related_name="posts", on_delete=models.CASCADE
     )
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -26,7 +26,7 @@ class Post(models.Model):
 
 
 class Like(models.Model):
-    user = models.ForeignKey("user.CustomUser", on_delete=models.CASCADE)
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     liked = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
